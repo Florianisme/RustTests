@@ -5,7 +5,7 @@ mod filesystem;
 
 #[rocket::main]
 async fn main() {
-    let _ = rocket::build().mount("/", routes![payloads::save_payload])
+    let _ = rocket::build().mount("/", routes![payloads::save_payload, payloads::get_payload])
         .launch()
         .await
         .expect("Server not started");
