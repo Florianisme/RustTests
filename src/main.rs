@@ -1,11 +1,11 @@
 #[macro_use] extern crate rocket;
 
-mod payloads;
-mod filesystem;
+mod endpoints;
+mod file;
 
 #[rocket::main]
 async fn main() {
-    let _ = rocket::build().mount("/", routes![payloads::save_payload, payloads::get_payload])
+    let _ = rocket::build().mount("/", routes![endpoints::payloads::save_payload, endpoints::payloads::get_payload])
         .launch()
         .await
         .expect("Server not started");
