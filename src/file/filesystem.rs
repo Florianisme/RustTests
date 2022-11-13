@@ -1,13 +1,11 @@
-use std::fs::OpenOptions;
-use rocket::tokio::io::BufWriter;
-use rocket::tokio::fs::File;
 use rocket::data::ByteUnit;
-use rocket::http::hyper::body::HttpBody;
 use rocket::response::stream::ReaderStream;
+use rocket::tokio::fs::File;
+use rocket::tokio::io::BufWriter;
 
 use crate::endpoints::payloads::Payload;
-use crate::file::paths;
 use crate::file::errors::PayloadError;
+use crate::file::paths;
 
 const FILE_SIZE_LIMIT: ByteUnit = ByteUnit::Gibibyte(1);
 
