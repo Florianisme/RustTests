@@ -1,4 +1,3 @@
-use std::io::ErrorKind;
 use std::io::ErrorKind::{AlreadyExists, NotFound};
 use rocket::data::ByteUnit;
 use rocket::response::stream::ReaderStream;
@@ -10,7 +9,6 @@ use crate::file::errors::PayloadError;
 use crate::file::paths;
 
 const FILE_SIZE_LIMIT: ByteUnit = ByteUnit::Gibibyte(1);
-
 
 pub async fn stream_to_file(payload: Payload<'_>) -> Result<(), PayloadError> {
     let open_options = OpenOptions::new().write(true).create_new(true).to_owned();
